@@ -3,8 +3,12 @@ import instagram from "../public/assets/icons/icon-instagram.svg";
 import twitter from "../public/assets/icons/Icon-Twitter.svg";
 import linkedin from "../public/assets/icons/Icon-Linkedin.svg";
 import cart from "@/public/assets/icons/Cart1.svg";
-import userIcon from "@/public/assets/icons/User=Off.svg";
 import wishListIcon from "@/public/assets/icons/heart small.svg";
+import userIcon from "@/public/assets/icons/User=Off.svg";
+import bag from "@/public/assets/icons/icon-mallbag.svg";
+import cancelIcon from "@/public/assets/icons/icon-cancel.svg";
+import starIcon from "@/public/assets/icons/Icon-Reviews.svg";
+import logoutIcon from "@/public/assets/icons/Icon-logout.svg";
 
 export const footerAccountLinks = [
   "My Account",
@@ -47,16 +51,12 @@ export const headerLinks = [
   { title: "Sign Up", link: "/signup" }
 ];
 
-export const headerIconLinks = [
-  {
-    title: "Wishlist",
-    link: "/wishlist",
-    icon: wishListIcon
-  },
-  { title: "Cart", link: "/", icon: cart },
-  {
-    title: "User",
-    link: "/account",
-    icon: userIcon
-  }
+export const headerIconLinks = [{ title: "Cart", link: "/", icon: cart }];
+
+export const headerProfileDropDownLinks = [
+  { title: "Manage My Account", link: "/account", icon: userIcon },
+  { title: "My Order", link: "/cart", icon: bag },
+  { title: "My Cancellations", link: "/cancellations", icon: cancelIcon },
+  { title: "My Reviews", link: "/reviews", icon: starIcon },
+  { title: "Logout", link: "/login", icon: logoutIcon }
 ];
