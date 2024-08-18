@@ -8,21 +8,20 @@ import Logo from "./Logo";
 
 import { useStore } from "@/store/profile/profile";
 import { useStore as wishlistStore } from "@/store/wishlist/wishlist";
+import { cartStore } from "@/store/cart/cart";
 
-import {
-  headerLinks,
-  headerIconLinks,
-  headerProfileDropDownLinks
-} from "@/constants/links";
+import { headerLinks, headerProfileDropDownLinks } from "@/constants/links";
 import searchIcon from "@/public/assets/icons/Component 2.svg";
 import userOffIcon from "@/public/assets/icons/User=Off.svg";
 import userOnIcon from "@/public/assets/icons/User=On.svg";
 import wishListIcon from "@/public/assets/icons/heart small.svg";
+import cartIcon from "@/public/assets/icons/Cart1.svg";
 
 const Header = () => {
   const profile = useStore((state) => state.showProfile);
   const setShowProfile = useStore((state) => state.setShowProfile);
   const { wishlist } = wishlistStore((state) => state);
+  const { cart } = cartStore((state) => state);
   const pathName = usePathname();
 
   return (
@@ -74,11 +73,18 @@ const Header = () => {
                 {wishlist.length}
               </p>
             </div>
-            {headerIconLinks.map(({ title, link, icon }) => (
-              <Link key={link} href={link} className="cursor-pointer">
-                <Image src={icon} alt={title} width={24} height={24} />
-              </Link>
-            ))}
+            <div className="relative">
+              <Image
+                src={cartIcon}
+                alt="Cart"
+                width={24}
+                height={24}
+                className="cursor-pointer"
+              />
+              <p className="absolute -top-2 -right-2 bg-button2 text-white title-12px-regular text-center w-4 h-4 rounded-full">
+                {cart.length}
+              </p>
+            </div>
             {profile ? (
               <Image
                 src={userOnIcon}

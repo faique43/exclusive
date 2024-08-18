@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { Product } from "@/types/product";
 import { ToastProps } from "@/types/toast";
 import { useStore } from "@/store/wishlist/wishlist";
+import { cartStore } from "@/store/cart/cart";
 
 import Toast from "./Toast";
 
@@ -34,6 +35,13 @@ const ProductCard = ({
   const wishlist = useStore((state) => state.wishlist);
   const addToWishlist = useStore((state) => state.addToWishlist);
   const removeFromWishlist = useStore((state) => state.removeFromWishlist);
+
+  const cart = cartStore((state) => state.cart);
+  const addToCart = cartStore((state) => state.addToCart);
+  const removeFromCart = cartStore((state) => state.removeFromCart);
+  const decreaseProductQuantity = cartStore(
+    (state) => state.decreaseProductQuantity
+  );
 
   const isInWishlist = wishlist.some((product) => product.id === id);
 
@@ -65,6 +73,49 @@ const ProductCard = ({
     }
   };
 
+  const existingProduct = cart.find((item) => item.product.id === id);
+  const handleAddToCartClick = () => {
+    addToCart({
+      id,
+      name,
+      price,
+      image,
+      rating,
+      discount,
+      numberOfReviews,
+      new: isNew
+    });
+    showToast({ image, heading: "Added to Cart", subheading: name });
+  };
+
+  const removeFromCartClick = () => {
+    removeFromCart({
+      id,
+      name,
+      price,
+      image,
+      rating,
+      discount,
+      numberOfReviews,
+      new: isNew
+    });
+    showToast({ image, heading: "Removed from Cart", subheading: name });
+  };
+
+  const handleDecreaseProductQuantity = () => {
+    decreaseProductQuantity({
+      id,
+      name,
+      price,
+      image,
+      rating,
+      discount,
+      numberOfReviews,
+      new: isNew
+    });
+    showToast({ image, heading: "Removed from Cart", subheading: name });
+  };
+
   const showToast = ({ image, heading, subheading }: ToastProps) => {
     toast(<Toast image={image} heading={heading} subheading={subheading} />);
   };
@@ -77,7 +128,12 @@ const ProductCard = ({
         onMouseLeave={() => setHover(false)}
       >
         <div className="absolute top-1/2 left-1/2 w-full h-full transform -translate-x-1/2 -translate-y-1/2">
-          <Image src={image} alt={name} fill className="object-contain" />
+          <Image
+            src={image}
+            alt={name}
+            layout="fixed"
+            className="object-contain absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          />
         </div>
 
         {isNew ? (
@@ -92,13 +148,36 @@ const ProductCard = ({
           )
         )}
 
-        <div
-          className={`absolute bottom-0 left-0 bg-button flex items-center justify-center title-12px-regular w-full text-white transition-all duration-300 ${
-            hover ? "h-[41px]" : "h-0"
-          }`}
-        >
-          Add To Cart
-        </div>
+        {!existingProduct ? (
+          <div
+            className={`absolute bottom-0 left-0 bg-button flex items-center justify-center title-12px-regular w-full text-white transition-all duration-300 overflow-hidden cursor-pointer ${
+              hover ? "h-[41px]" : "h-0"
+            }`}
+            onClick={handleAddToCartClick}
+          >
+            Add To Cart
+          </div>
+        ) : (
+          <div
+            className={`absolute bottom-0 left-0 flex items-center justify-between w-full text-white transition-all duration-300 overflow-hidden cursor-pointer h-[41px]`}
+          >
+            <p
+              className="w-1/3 text-center text-white bg-button h-full title-20px-semibold flex items-center justify-center"
+              onClick={handleDecreaseProductQuantity}
+            >
+              -
+            </p>
+            <p className="w-1/3 text-center text-button">
+              {existingProduct.quantity}
+            </p>
+            <p
+              className="w-1/3 text-center text-white bg-button h-full title-20px-semibold flex items-center justify-center"
+              onClick={handleAddToCartClick}
+            >
+              +
+            </p>
+          </div>
+        )}
 
         <div className="absolute top-3 right-3 flex flex-col items-center justify-center gap-2">
           <div

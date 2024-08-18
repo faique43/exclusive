@@ -2,8 +2,6 @@ import facebook from "../public/assets/icons/Icon-Facebook.svg";
 import instagram from "../public/assets/icons/icon-instagram.svg";
 import twitter from "../public/assets/icons/Icon-Twitter.svg";
 import linkedin from "../public/assets/icons/Icon-Linkedin.svg";
-import cart from "@/public/assets/icons/Cart1.svg";
-import wishListIcon from "@/public/assets/icons/heart small.svg";
 import userIcon from "@/public/assets/icons/User=Off.svg";
 import bag from "@/public/assets/icons/icon-mallbag.svg";
 import cancelIcon from "@/public/assets/icons/icon-cancel.svg";
@@ -50,8 +48,6 @@ export const headerLinks = [
   { title: "About", link: "/about" },
   { title: "Sign Up", link: "/signup" }
 ];
-
-export const headerIconLinks = [{ title: "Cart", link: "/", icon: cart }];
 
 export const headerProfileDropDownLinks = [
   { title: "Manage My Account", link: "/account", icon: userIcon },
