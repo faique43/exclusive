@@ -166,3 +166,15 @@ export const allProducts = [
     new: false
   }
 ];
+
+export const productCategories = [
+  "Woman’s Fashion",
+  "Men’s Fashion",
+  "Electronics",
+  "Home & Lifestyle",
+  "Medicine",
+  "Sports & Outdoor",
+  "Baby’s & Toys",
+  "Groceries & Pets",
+  "Health & Beauty"
+];

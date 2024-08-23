@@ -11,7 +11,7 @@
 .text-110px-semibold {
   font-size: 110px;
   line-height: 115px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-110px-medium {
@@ -35,7 +35,7 @@
 .text-90px-semibold {
   font-size: 90px;
   line-height: 98px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-90px-medium {
@@ -59,7 +59,7 @@
 .text-64px-semibold {
   font-size: 64px;
   line-height: 68px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-64px-medium {
@@ -83,7 +83,7 @@
 .text-54px-semibold {
   font-size: 54px;
   line-height: 64px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-54px-medium {
@@ -107,7 +107,7 @@
 .text-48px-semibold {
   font-size: 48px;
   line-height: 60px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-48px-medium {
@@ -131,7 +131,7 @@
 .text-36px-semibold {
   font-size: 36px;
   line-height: 48px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-36px-medium {
@@ -155,7 +155,7 @@
 .text-32px-semibold {
   font-size: 32px;
   line-height: 30px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-32px-medium {
@@ -179,7 +179,7 @@
 .text-24px-semibold {
   font-size: 24px;
   line-height: 24px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-24px-medium {
@@ -203,7 +203,7 @@
 .text-20px-semibold {
   font-size: 20px;
   line-height: 20px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .text-20px-medium {
@@ -221,7 +221,7 @@
 .title-24px-semibold {
   font-size: 24px;
   line-height: 32px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .title-24px-medium {
@@ -239,7 +239,7 @@
 .title-20px-semibold {
   font-size: 20px;
   line-height: 28px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .title-20px-medium {
@@ -257,7 +257,7 @@
 .title-16px-semibold {
   font-size: 16px;
   line-height: 20px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .title-16px-medium {
@@ -275,7 +275,7 @@
 .title-14px-semibold {
   font-size: 14px;
   line-height: 21px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .title-14px-medium {
@@ -293,7 +293,7 @@
 .title-12px-semibold {
   font-size: 12px;
   line-height: 18px;
-  font-weight: semibold;
+  font-weight: 600;
 }
 
 .title-12px-medium {
@@ -306,4 +306,52 @@
   font-size: 12px;
   line-height: 18px;
   font-weight: 400;
+}
+
+.embla {
+  position: relative;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__container {
+  display: flex;
+  will-change: transform;
+  gap: 30px;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 0; /* Prevent slides from stretching */
+  flex: 0 0 auto;
+  width: 270px; /* Set the width of each slide */
+}
+
+.embla__button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.embla__button--prev {
+  left: 0;
+}
+
+.embla__button--next {
+  right: 0;
+}
+
+.embla__button:focus {
+  outline: none;
 }
